@@ -7,8 +7,10 @@ export function activate(context: vscode.ExtensionContext) {
     console.log('🔥 Local AI extension is now active!');
 
     const disposable = vscode.commands.registerCommand('localai.runModel', async () => {
-     
-        await ensureModelDownloaded();
+        const modelReady = await ensureModelDownloaded();
+        if (!modelReady) {
+            return;
+        }
 
         const panel = vscode.window.createWebviewPanel(
             'localaiPrompt', 
