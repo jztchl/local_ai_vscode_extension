@@ -1,9 +1,12 @@
-import { spawn } from 'child_process';
+import * as path from 'path';
 import * as vscode from 'vscode';
+import { spawn } from 'child_process';
 
 export function runLocalModel(prompt: string) {
-    const modelPath = './models/TinyLlama.gguf'; 
-    const modelProcess = spawn('./llama.cpp/main', [
+    const modelPath = path.join(__dirname, '..', 'models', 'tinyllama-1.1b-chat-v1.0.Q2_K.gguf');
+    const llamaCppBinary = path.join(__dirname, '..', 'llama.cpp', 'main');
+
+    const modelProcess = spawn(llamaCppBinary, [
         '--model', modelPath,
         '--prompt', prompt
     ]);

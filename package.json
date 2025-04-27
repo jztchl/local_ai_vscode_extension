@@ -14,8 +14,16 @@
   "contributes": {
     "commands": [
       {
-        "command": "local-ai.helloWorld",
-        "title": "Hello World"
+        "command": "localai.runModel",
+        "title": "Run AI Model"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "localai.runModel",
+        "key": "ctrl+shift+m",  
+        "mac": "cmd+shift+m",  
+        "when": "editorTextFocus" 
       }
     ]
   },
